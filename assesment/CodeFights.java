@@ -32,7 +32,7 @@ class CodeFights {
         ArrayList<Pair> successPairs = new ArrayList<Pair>();
 
         //COMPARE ALL COMBINATIONS, IGNORE DUPLICATES, ADD TO successPairs ARRAYLIST
-        for(int j = 0; j != input; j++) {
+        for(int j = 0; j <= input; j++) {
             for(int k=j; k <= input; k++) {
                 Pair pair = new Pair(j, k);
                 if(pair.sum == input)
@@ -81,7 +81,7 @@ class CodeFights {
 
         @Override
         public String toString(){
-            return String.valueOf(first) + " + " + String.valueOf(second);
+            return convertToChar(first) + " + " + convertToChar(second);
         }
     }
 
