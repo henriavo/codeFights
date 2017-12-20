@@ -15,8 +15,8 @@ class CodeFights {
         System.out.println(" response array: " + Arrays.toString(response));
     }
 
-    //String[] newNumeralSystem(char number) {
-    String newNumeralSystem(char number) {
+    String[] newNumeralSystem(char number) {
+    //String newNumeralSystem(char number) {
         int[] integerArray = new int[26];
         for(int i = 0 ; i < 26 ; i++){
             integerArray[i] = i;
@@ -40,10 +40,13 @@ class CodeFights {
             }
         } 
 
+        String[] result = new String[successPairs.size()];
 
-       
+        for(int j=0; j<result.length; j++){
+            result[j] = successPairs.get(j).toString();
+        }
 
-        return "none";
+        return result;
 }
 
     class Pair {
@@ -74,6 +77,11 @@ class CodeFights {
             if(this.first == pair1.second && this.second == pair1.first)
                 return true;
             return false;
+        }
+
+        @Override
+        public String toString(){
+            return String.valueOf(first) + " + " + String.valueOf(second);
         }
     }
 
