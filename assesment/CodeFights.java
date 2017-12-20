@@ -1,17 +1,22 @@
 
 import java.util.HashMap;
+import java.util.ArrayList;
 import java.lang.Character;
+import java.util.Arrays;
 
 class CodeFights {
 
     public static void main(String[] args){
         System.out.println("Hello World!!!");
+
+        String[] response = new String[2];
+        response[0] = "2 + 4";
+        response[1] = "1 + 3";
+        System.out.println(" response array: " + Arrays.toString(response));
     }
 
-
-
-    String[] newNumeralSystem(char number) {
-
+    //String[] newNumeralSystem(char number) {
+    String newNumeralSystem(char number) {
         int[] integerArray = new int[26];
         for(int i = 0 ; i < 26 ; i++){
             integerArray[i] = i;
@@ -26,13 +31,19 @@ class CodeFights {
 
         ArrayList<Pair> successPairs = new ArrayList<Pair>();
 
-        for(int j = 0 ; j != input ; j++){
-            pair1.second = integerArray[j];
-
+        //COMPARE ALL COMBINATIONS, IGNORE DUPLICATES, ADD TO successPairs ARRAYLIST
+        for(int j = 0; j != input; j++) {
+            for(int k=j; k <= input; k++) {
+                Pair pair = new Pair(j, k);
+                if(pair.sum == input)
+                    successPairs.add(pair);
+            }
         } 
+
+
        
 
-        return input;
+        return "none";
 }
 
     class Pair {
@@ -50,13 +61,13 @@ class CodeFights {
             this.first = first;
         }
 
-        setSecond(int second){
-            this.second = second
+        public void setSecond(int second){
+            this.second = second;
             this.sum = this.first + this.second;
         }
 
         @Override
-        public boolean euqlas(Object o){
+        public boolean equals(Object o){
             Pair pair1 = (Pair) o;
             if(this.first == pair1.first && this.second == pair1.second)
                 return true;
@@ -101,14 +112,15 @@ class CodeFights {
             System.exit(0);
         }
 
-        Integer input = Character.getNumericValue(number);
-        System.out.println("Received user input: " + input);
+        System.out.println("Received user input: " + number);
+        Integer converted = numericSystem.get(number);
+        System.out.println("Converted user input: " + converted);
 
-        return input;
+        return converted;
     }
 
     public Character convertToChar(Integer number){
-        HashMap<Character, Integer> numericSystem = new HashMap();
+        HashMap<Integer, Character> numericSystem = new HashMap();
         numericSystem.put(0, 'A');
         numericSystem.put(1, 'B');
         numericSystem.put(2, 'C');
@@ -142,10 +154,11 @@ class CodeFights {
             System.exit(0);
         }
 
-        Integer input = Character.getNumericValue(number);
-        System.out.println("Received user input: " + input);
+        System.out.println("Received user input: " + number);
+        Character converted = numericSystem.get(number);
+        System.out.println("Converted user input: " + converted);
 
-        return input;
+        return converted;
     }
 
 
