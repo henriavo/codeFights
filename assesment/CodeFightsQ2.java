@@ -8,7 +8,7 @@ class CodeFightsQ2 {
 
     public static void main(String[] args) {
         System.out.println("Hello World!!!");
-        String input = "abc3[def]ghi";
+        String input = "abc11[def]ghi";
         String output = decodeString(input);
         System.out.println(" **** " + output);
 
@@ -38,8 +38,17 @@ class CodeFightsQ2 {
 				sb.append(char1);
 			}
 			else if(Character.isDigit(char1)) {
-				System.out.println(" char1: " + char1);
-				Integer repeat = Integer.valueOf(char1.toString());
+				StringBuilder sb2 = new StringBuilder();
+				sb2.append(char1);
+
+				Iterator<Character> itr2 = itr;
+				Character char2 = (Character)itr2.next();
+				while(Character.isDigit(char2)){
+					sb2.append(char2);
+					char2 = (Character)itr2.next();
+				}
+			
+				Integer repeat = Integer.valueOf(sb2.toString());
 				String toRepeat = recursive(itr);
 				System.out.println(" toRepeat: " + toRepeat);
 				System.out.println(" repeat: " + repeat);
